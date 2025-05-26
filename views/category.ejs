@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title><%= category %></title>
+    </head>
+    <h1><%= category %></h1>
+
+    <body>
+        <% items.forEach((item) { %>
+            <div><%= item.brand %> <%= item.name %></div>
+        <% }) %>
+    </body>
+
+</html>
