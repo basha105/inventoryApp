@@ -1,13 +1,33 @@
 <html>
     <head>
-        <title><%= category %></title>
+        <title><%= sport %></title>
+        <link rel="stylesheet" href="/styles.css">
     </head>
-    <h1><%= category %></h1>
 
     <body>
+        <%- include('navbar'); -%>
+        <h1><%= sport %></h1>
         <ul>
             <% items.forEach((item) => { %>
-                <li><%= item.brand %> <%= item.model %></li>
+                <li>
+                    <% if (item.sport === "football") { %>
+                        <img src="/soccer-jersey-svgrepo-com.svg" alt="football" class="football">
+                    <% } %>
+
+                    <% if (item.sport === "hockey") { %>
+                        <img src="hockey-sticks-svgrepo-com.svg" alt="hockey" class="hockey">
+                    <% } %>
+
+                    <% if (item.sport === "basketball") { %>
+                        <img src="basketball-jersey-svgrepo-com.svg" alt="basketball" class="bball">
+                    <% } %>
+
+                    <% if (item.sport === "baseball") { %>
+                        <img src="baseball-outline-svgrepo-com.svg" alt="baseball" class="baseball">
+                    <% } %>
+
+                    <%= item.team %> jersey by <%= item.brand %>
+                </li>
             <% }); %>
         </ul>
         

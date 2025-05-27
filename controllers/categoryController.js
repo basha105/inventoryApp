@@ -1,10 +1,16 @@
 const db = require('../db/queries');
 
-async function displayCategory(req, res) {
+async function displayAllItems(req, res) {
+    const items = await db.getAllItems();
+    res.render("category", { sport: "All Items", items: items });
+}
+
+async function displaySportItems(req, res) {
     const { category } = req.params;
-    const items = await db.getItems();
+    console.log(category);
+    const items = await db.getItemsBySport(category);
     console.log('items:', items);
-    res.render("category", { category: category, items: items});
+    res.render("category", { sport: category, items: items});
 }
 
 function displayItem(req, res) {
@@ -13,6 +19,7 @@ function displayItem(req, res) {
 }
 
 module.exports = {
-    displayCategory,
+    displayAllItems,
+    displaySportItems,
     displayItem
 }

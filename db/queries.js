@@ -1,10 +1,16 @@
 const pool = require('./pool');
 
-async function getItems() {
-    const { rows } = await pool.query('SELECT * FROM cleats');
+async function getAllItems() {
+    const { rows } = await pool.query("SELECT * FROM jerseys");
+    return rows;
+}
+
+async function getItemsBySport(sport) {
+    const { rows } = await pool.query(`SELECT * FROM jerseys WHERE sport = $1`, [sport]);
     return rows;
 }
 
 module.exports = {
-    getItems
+    getItemsBySport,
+    getAllItems
 }

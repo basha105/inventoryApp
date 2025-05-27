@@ -2,14 +2,15 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const indexRouter = require("./routes/indexRouter");
+const path = require('path');
+
+const assetsPath = path.join(__dirname, "public");
+app.use(express.static(assetsPath));
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true}));
 
 app.use("/", indexRouter);
-console.log("password:", process.env.DB_PASSWORD);
-console.log("db name:", process.env.DB_NAME);
-
 
 const PORT = 3000;
 app.listen(PORT, ()=> {
