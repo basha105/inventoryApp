@@ -1,6 +1,10 @@
-function displayCategory(req, res) {
+const db = require('../db/queries');
+
+async function displayCategory(req, res) {
     const { category } = req.params;
-    res.send(`Currently viewing all items in the ${category} category`);
+    const items = await db.getItems();
+    console.log('items:', items);
+    res.send("items loading here");
 }
 
 function displayItem(req, res) {
