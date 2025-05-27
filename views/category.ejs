@@ -5,9 +5,12 @@
     <h1><%= category %></h1>
 
     <body>
-        <% items.forEach((item) { %>
-            <div><%= item.brand %> <%= item.name %></div>
-        <% }); %>
+        <ul>
+            <% items.forEach((item) => { %>
+                <li><%= item.brand %> <%= item.model %></li>
+            <% }); %>
+        </ul>
+        
     </body>
 
 </html>
