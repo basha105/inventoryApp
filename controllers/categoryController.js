@@ -13,13 +13,22 @@ async function displaySportItems(req, res) {
     res.render("category", { sport: category, items: items});
 }
 
+
 function displayItem(req, res) {
     const { category, item } = req.params;
     res.send(`Currently viewing ${item}, member of the ${category} category`);
 }
 
+async function displayCategories(req, res) {
+    const cats = await db.getCategories();
+    res.render("categories", { categories: cats });
+}
+
+
+
 module.exports = {
     displayAllItems,
     displaySportItems,
-    displayItem
+    displayItem,
+    displayCategories
 }

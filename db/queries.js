@@ -10,7 +10,19 @@ async function getItemsBySport(sport) {
     return rows;
 }
 
+async function addItem(team, sport, brand, price) {
+    await pool.query("INSERT INTO jerseys (team, sport, brand, price) VALUES ($1, $2, $3, $4)", [team, sport, brand, price]);
+}
+
+async function getCategories() {
+    const { rows } = await pool.query(`SELECT sport FROM sports`);
+    return rows;
+}
+
+
 module.exports = {
     getItemsBySport,
-    getAllItems
+    getAllItems,
+    addItem,
+    getCategories
 }

@@ -19,6 +19,18 @@ VALUES
     ('New York Yankees', 'baseball', 'nike', 120.00),
     ('Minnesota Timberwolves', 'basketball', 'nike', 180.00),
     ('Real Madrid', 'football', 'adidas', 170.00);
+
+CREATE TABLE IF NOT EXISTS sports (
+    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    sport VARCHAR (25)
+);
+
+INSERT INTO sports (sport)
+VALUES
+    ('football'),
+    ('basketball'),
+    ('hockey'),
+    ('baseball');
 `;
 
 async function main() {
