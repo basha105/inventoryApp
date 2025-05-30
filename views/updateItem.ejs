@@ -1,0 +1,7 @@
+<form action="/sports/<%= item.sport %>/<%= item.id %>/update" method="POST">
+    <input type="text" name="team" id="team" value="<%= item.team %>">
+    <input type="text" name="sport" id="sport" value="<%= item.sport %>">
+    <input type="text" name="brand" id="brand" value="<%= item.brand %>">
+    <input type="text" name="price" id="price" value="<%= item.price %>">
+    <button type="submit">Update</button>
+</form>

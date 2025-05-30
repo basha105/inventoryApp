@@ -13,10 +13,25 @@ async function displaySportItems(req, res) {
     res.render("category", { sport: category, items: items});
 }
 
+async function displayItem(req, res) {
+    const { id } = req.params;
+    const rows = await db.getItemById(id);
+    const item = rows[0];
+    res.render("item", { item: item });
+}
 
-function displayItem(req, res) {
-    const { category, item } = req.params;
-    res.send(`Currently viewing ${item}, member of the ${category} category`);
+async function updateItemGet(req, res) {
+    const { id }  = req.params;
+    const rows = await db.getItemById(id);
+    const item = rows[0];
+    res.render("updateItem", { item: item });
+}
+
+async function updateItemPost(req, res) {
+    const { id } = req.params;
+    const { team, sport, brand, price } = req.body;
+    await db.updateItemById(id, team, sport, brand, price);
+    res.redirect(`/sports/${sport}/${id}`);
 }
 
 async function displayCategories(req, res) {
@@ -24,11 +39,11 @@ async function displayCategories(req, res) {
     res.render("categories", { categories: cats });
 }
 
-
-
 module.exports = {
     displayAllItems,
     displaySportItems,
     displayItem,
+    updateItemGet,
+    updateItemPost,
     displayCategories
 }

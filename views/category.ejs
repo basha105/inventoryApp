@@ -26,7 +26,10 @@
                         <img src="baseball-outline-svgrepo-com.svg" alt="baseball" class="baseball">
                     <% } %>
 
-                    <%= item.team %> jersey by <%= item.brand %>
+                    <a href="/sports/<%= item.sport %>/<%= item.id %>">
+                        <%= item.team %> jersey by <%= item.brand %>
+                    </a>
+
                 </li>
             <% }); %>
         </ul>

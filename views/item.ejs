@@ -1,9 +1,14 @@
 <div>
-    <h1><%= brand %> %<= name %></h1>
+    <h1><%= item.team %></h1>
     <ul>
-        <li>Brand: <%= brand %></li>
-        <li>Model: <%= name %></li>
-        <li>Price: <%= price %></li>
-        <li>Year: <%= year %></li>
+        <li>Team: <%= item.team %></li>
+        <li>Manufacturer: <%= item.brand %></li>
+        <li>Sport: <%= item.sport %></li>
+        <li>Price: $<%= item.price %> CAD</li>
+
+        <a href="/sports/<%= item.sport %>/<%= item.id %>/update">Update</a>
+        <a href="">Delete</a>
     </ul>
+
+    
 </div>
