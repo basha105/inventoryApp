@@ -26,6 +26,11 @@ async function getItemById(id) {
     return rows;
 }
 
+async function deleteItemById(id) {
+    await pool.query(`DELETE FROM jerseys WHERE id = $1`, [id]);
+}
+
+
 async function getCategories() {
     const { rows } = await pool.query(`SELECT sport FROM sports`);
     return rows;
@@ -37,5 +42,6 @@ module.exports = {
     updateItemById,
     addItem,
     getItemById,
+    deleteItemById,
     getCategories
 }

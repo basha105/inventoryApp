@@ -34,10 +34,28 @@ async function updateItemPost(req, res) {
     res.redirect(`/sports/${sport}/${id}`);
 }
 
+async function createItemGet(req, res) {
+    res.render("addItem");
+}
+
+async function createItemPost(req, res) {
+    const { team, sport, brand, price } = req.body;
+    await db.addItem(team, sport, brand, price);
+    res.redirect("/sports");
+}
+
+async function deleteItemPost(req, res) {
+    const { id, category } = req.params;
+    await db.deleteItemById(id);
+    res.redirect(`/sports/${category}`);
+}
+
+
 async function displayCategories(req, res) {
     const cats = await db.getCategories();
     res.render("categories", { categories: cats });
 }
+
 
 module.exports = {
     displayAllItems,
@@ -45,5 +63,8 @@ module.exports = {
     displayItem,
     updateItemGet,
     updateItemPost,
+    createItemGet,
+    createItemPost,
+    deleteItemPost,
     displayCategories
 }
